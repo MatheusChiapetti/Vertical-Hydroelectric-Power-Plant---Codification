@@ -3,14 +3,38 @@ import random as random
 from Ctrl import Ctrl
 import math as math
 import time as time
+import sys as sys
 
 class Mont:
     
     def routine0001():
-        return
+        hc = random.randint(-8, 9) # Altura entre a linha d'água e o topo da entrada.
+
+        if(hc >= -6 and hc <= 7):
+            print(f"Nível da água: {hc} m.")
+        else:
+            print(f"Nível da água: {hc} m.")
+            Ctrl.routine0032()
+            Mont.routine0021()
+            sys.exit()
+
+        return hc
     
     def routine0002():
-        return
+        vf = random.randint(0, 5) # Velocidade do fluido fora da usina.    
+
+        if(vf == 1):
+            print(f"Velocidade da água: {vf} m/s")
+        
+        elif(vf > 1 or vf < 1):
+            print(f"Velocidade da água: {vf} m/s")
+        elif(vf >> 1):
+            print(f"Velocidade da água: {vf} m/s")
+            Ctrl.routine0032()
+            Mont.routine0021()
+            sys.exit()
+
+        return vf
     
     def routine0003():
         return
@@ -70,4 +94,5 @@ class Mont:
         return
     
     def routine0021():
-        return
+        print("Todos os processos foram concluídos")
+        return True

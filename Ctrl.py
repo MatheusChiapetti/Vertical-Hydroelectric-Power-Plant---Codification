@@ -2,6 +2,7 @@ from PyTie import PyTie as pytie
 import random as random
 import math as math
 import time as time
+import sys as sys
 
 class Ctrl:
     
@@ -36,4 +37,17 @@ class Ctrl:
         return
     
     def routine0032():
-        return
+        print("A usina será desligada.")
+        print("Executando rotina 0025.")
+        Ctrl.routine0025()
+        time.sleep(2)
+        print("Executando rotina 0028.")
+        Ctrl.routine0028
+        time.sleep(2)
+        print("Executando rotina 0023.")
+        Ctrl.routine0023
+        time.sleep(2)
+        print("Executando rotina 0029.")
+        Ctrl.routine0029
+        time.sleep(2)
+        return 

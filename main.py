@@ -36,8 +36,6 @@ def main():
     hs = 50 # Altura submersa.
     hd = 25 # Altura entre a base da entrada e a turbina.
     hr = 6  # Altura entre a turbina e o leito.
-    hc = random.randint(-6, 7) # •	Altura entre a linha d'água e o topo da entrada.
-    vf = random.randint(0, 5) # Velocidade do fluido fora da usina.    
 
     '''
     # Para hs = 40m, usar:
@@ -50,47 +48,46 @@ def main():
     hs = 40 # Altura submersa.
     hd = 25 # Altura entre a base da entrada e a turbina.
     hr = 6  # Altura entre a turbina e o leito.
-    hc = random.randint(-6, 7) # •	Altura entre a linha d'água e o topo da entrada.
-    vf = random.randint(0, 5) # Velocidade do fluido fora da usina.   
     ''' 
     
     # Rotinas de Emergência:
 
-    excp = random.randint(0, 1560) # Condição para executar as emergências.
+    # Condição para executar as emergências. Há a probabilidade de 8,28% de ocorrer uma emergência (13/157).
+    excp = random.randint(0, 156)
 
     if(excp == 0):
         Excp.routine0033
-    elif(excp == 130):
+    elif(excp == 13):
         Excp.routine0034
-    elif(excp == 260):
+    elif(excp == 26):
         Excp.routine0035      
-    elif(excp == 390):
+    elif(excp == 39):
         Excp.routine0036
-    elif(excp == 520):
+    elif(excp == 52):
         Excp.routine0037
-    elif(excp == 650):
+    elif(excp == 65):
         Excp.routine0038
-    elif(excp == 780):
+    elif(excp == 78):
         Excp.routine0039
-    elif(excp == 910):
+    elif(excp == 91):
         Excp.routine0040
-    elif(excp == 1040):
+    elif(excp == 104):
         Excp.routine0041
-    elif(excp == 1170):
+    elif(excp == 117):
         Excp.routine0042
-    elif(excp == 1300):
+    elif(excp == 130):
         Excp.routine0043
-    elif(excp == 1430):
+    elif(excp == 143):
         Excp.routine0044
-    elif(excp == 1560):
+    elif(excp == 156):
         Excp.routine0045  
 
     # Rotinas de Monitoramento:    
     
-    Mont.routine0001()
+    hc = Mont.routine0001()
     
-    Mont.routine0002()
-    
+    vf = Mont.routine0002()
+
     Mont.routine0003()
     
     Mont.routine0004()
@@ -127,10 +124,7 @@ def main():
     
     Mont.routine0019()
     
-    Mont.routine0020()
-    
-    Mont.routine0021()        
-    
+    Mont.routine0020()        
     
 if __name__ == "__main__":
     main()
