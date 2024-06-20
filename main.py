@@ -15,7 +15,8 @@ OBS IMPORTANTES (APAGAR QUANDO FINALIZAR):
 
 def main():
 
-    y = 1000    # Peso específico do fluido.
+    y = 9800    # Peso específico do fluido.
+    p = 1000    # Densidade do fluído.
     g = 9.8     # Aceleração da gravidade.
     f = 0.008   # Coeficiente de perda de carga distribuída.
     ks_1 = 0.3  # Ampliação gradual.
@@ -24,6 +25,7 @@ def main():
     ks_4 = 0.4  # Curva de 90°.
     ks_5 = 0.15 # Redução gradual.
     sec = 1.41  # Secante do ângulo θ (45°).
+    nt = 0.9    # Rendimento da turbina.
     pi  = 3.14  # Pi.
 
     # Para hs = 50m, usar:
@@ -36,6 +38,10 @@ def main():
     hs = 50 # Altura submersa.
     hd = 25 # Altura entre a base da entrada e a turbina.
     hr = 6  # Altura entre a turbina e o leito.
+
+    alfa = 0
+
+    Q = 285
 
     '''
     # Para hs = 40m, usar:
@@ -88,15 +94,15 @@ def main():
     
     vf = Mont.routine0002()
 
-    Mont.routine0003()
+    Qf = Mont.routine0006()
+
+    v2 = Mont.routine0003()
     
-    Mont.routine0004()
+    v3 = Mont.routine0004()
     
-    Mont.routine0005()
+    v4 = Mont.routine0005()
     
-    Mont.routine0006()
-    
-    Mont.routine0007()
+    hq = Mont.routine0007(hc, de, hd)
     
     Mont.routine0008()
     
@@ -104,26 +110,20 @@ def main():
     
     Mont.routine0010()
     
-    Mont.routine0011()
+    P5 = Mont.routine0011(ds, hq, y)
     
-    Mont.routine0012()
+    Pw = Mont.routine0012(Q, nt, p, hq)
+        
+    Mont.routine0013(y, hs)
     
-    Mont.routine0012()
-    
-    Mont.routine0013()
-    
-    Mont.routine0014()
-    
-    Mont.routine0015()
-    
-    Mont.routine0016()
+    estavel = Mont.routine0014()
+        
+    Mont.routine0016(estavel)
     
     Mont.routine0017()
     
     Mont.routine0018()
-    
-    Mont.routine0019()
-    
+        
     Mont.routine0020()        
     
 if __name__ == "__main__":
