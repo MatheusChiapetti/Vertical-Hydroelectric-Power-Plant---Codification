@@ -43,9 +43,27 @@ class PyTie:
         return hs
     
     # Diâmetro de abertura.
-    def equad08(de, alpha, cl):
-        x = math.sin(alpha) * cl
-        da = de + (2 * x)
+    def equad08(alpha):
+        if(alpha == 30):
+            da = 24
+        elif(alpha == 25):
+            da = 22.08
+        elif(alpha == 21):
+            da = 20.4
+        elif(alpha == 18):
+            da = 19.2
+        elif(alpha == 15):
+            da = 18
+        elif(alpha == 12):
+            da = 16.8
+        elif(alpha == 10):
+            da = 16.08
+        elif(alpha == 8):
+            da = 15.12
+        elif(alpha == 5):
+            da = 13.92
+        elif(alpha == 0):
+            da = 0        
         return da
     
     # Altura da queda d'água. 
@@ -55,22 +73,25 @@ class PyTie:
 
     # Vazão volumétrica no ponto 1.
     def equad10(da, de, hc, vf):
-        Qf = (da * (de + hc)) * vf
+        Qf = ((de + hc) * da) * vf
         return Qf
 
     # Vazão volumétrica no ponto 2 (Velocidade 2).
     def equad11(de, pi, Qf):
-        v2 = Qf / (math.pow(de, 2) * pi)
+        v = (math.pow(de/2, 2) * pi)
+        v2 = Qf / (v)
         return v2
 
     # Vazão volumétrica no ponto 3 (Velocidade 3).
     def equad12(dt, pi, Qf):
-        v3 = Qf / (math.pow(dt, 2) * pi)
+        v = (math.pow(dt/2, 2) * pi)
+        v3 = Qf / (v)
         return v3
     
     # Vazão volumétrica no ponto 4 (Velocidade 4).
     def equad13(ds, pi, Qf):
-        v4 = Qf / (math.pow(ds, 2) * pi)
+        v = (math.pow(ds/2, 2) * pi)
+        v4 = Qf / (v)
         return v4
 
     # Velocidade média entre os pontos 1 e 2.
