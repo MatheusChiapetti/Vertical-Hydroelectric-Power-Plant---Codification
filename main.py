@@ -53,6 +53,8 @@ def main():
     hd = 25 # Altura entre a base da entrada e a turbina.
     hr = 6  # Altura entre a turbina e o leito.
     ''' 
+
+    P1 = 0
     
     # Rotinas de Emergência:
 
@@ -190,17 +192,46 @@ def main():
     v4 = Mont.routine0005(ds, pi, Qf)
     
     hq = Mont.routine0007(hc, de, hd)
-    
-    Mont.routine0008()
-    
-    Mont.routine0009()
-    
-    Mont.routine0010()
+
+    L = pytie.equad22(hd, de, sec)
+
+    z1 = pytie.equad17(de, hc, hd, hr)
+
+    z2 = pytie.equad18(de, hd, hr)
+
+    z3 = pytie.equad19(dt, hr)
+
+    z4 = pytie.equad20(hr, dt)
+
+    z5 = pytie.equad21(ds, hq)
+
+    print(f"Cotas: {z1}, {z2}, {z3}, {z4}, {z5}")
     
     P5 = Mont.routine0011(ds, hq, y)
     
     Pw = Mont.routine0012(Qf, nt, p, hq)
-        
+
+    c_mano = pytie.equad03(Pw, y, Qf, nt)  
+
+    print(f"Carga Manométrica: {round(c_mano, 5)}") 
+
+    vm1_2 = pytie.equad14(vf, v2)
+
+    vm2_3 = pytie.equad15(v2, v3)
+
+    vm3_4 = pytie.equad16(v3, v4)
+
+    print(f"V. Médias: {round(vm1_2)}, {round(vm2_3)}, {round(vm3_4)}")
+    
+    P2 = Mont.routine0008(z1, z2, vf, v2, g, y, P1, vm1_2, ks_2, ks_3, ks_5)
+    
+    P3 = Mont.routine0009(z2, z3, v2, v3, g, y, P2, f, L, dt, vm2_3, ks_3)
+    
+    print(f"Pressão 2: {P2}")
+    print(f"Pressão 3: {P3}")
+
+    Mont.routine0010()
+
     Mont.routine0013(y, hs)
     
     estavel = Mont.routine0014(alpha)

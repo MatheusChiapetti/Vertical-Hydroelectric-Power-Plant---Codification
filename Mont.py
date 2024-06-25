@@ -55,11 +55,30 @@ class Mont:
         print(f"Altura da queda d'água: {hq} m")
         return hq
     
-    def routine0008(): # TERMINAR!
-        return
-    
-    def routine0009(): # TERMINAR!
-        return
+    def routine0008(z1, z2, vf, v2, g, y, P1, vm1_2, ks_2, ks_3, ks_5):
+        H1 = pytie.equad04(z1, vf, g, y, P1)
+
+        hs_1 = pytie.equad07(ks_2, vm1_2, g)
+        hs_2 = pytie.equad07(ks_3, vm1_2, g)
+        hs_3 = pytie.equad07(ks_5, vm1_2, g)
+
+        hs_t = hs_1 + hs_2 + hs_3
+
+        P2 = (pytie.equad05(H1, z2, v2, g, y) - hs_t)
+
+        return P2
+
+    def routine0009(z2, z3, v2, v3, g, y, P2, f, L, dt, vm2_3, ks_3): 
+        H2 = pytie.equad04(z2, v2, g, y, P2)
+
+        hf = pytie.equad06(f, L, dt, vm2_3, g)
+        hs_1 = pytie.equad07(ks_3, vm2_3, g)
+
+        h_t = hs_1 + hf
+
+        P3 = (pytie.equad05(H2, z3, v3, g, y) - h_t)
+
+        return P3
     
     def routine0010(): # TERMINAR!
         return

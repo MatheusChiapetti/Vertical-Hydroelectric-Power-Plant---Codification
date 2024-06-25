@@ -89,5 +89,4 @@ class Ctrl:
         time.sleep(2)
         print("Executando rotina 0029.")
         Ctrl.routine0029
-        time.sleep(2)
-        return 
+        time.sleep(2) 
