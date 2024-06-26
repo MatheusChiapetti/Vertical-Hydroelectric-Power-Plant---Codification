@@ -1,17 +1,17 @@
 from PyTie import PyTie as pytie
 import random as random
+import locale as locale
 from Ctrl import Ctrl
 import math as math
 import time as time
 import sys as sys
-import locale as locale
 
 class Mont:
 
     locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
     
     def routine0001():
-        hc = 7
+        hc = 6
         return hc
     
     def routine0002():
@@ -151,8 +151,23 @@ class Mont:
             Mont.routine0021()
             sys.exit()
 
-    def routine0020():
-        return
+    def routine0020(P4, P5, Qf):
+
+        zona_op = ""
+
+        if(P4 > 900000 and P5 > 300000):
+            zona_op = "Regular"
+        elif(P4 > 900000 and 300000 > P5 > 280000):
+            zona_op = "Moderada"
+        elif(900000 > P4 > 700000 and 280000 > P5 > 270000):
+            zona_op = "Intermediária"
+        elif(P4 < P5 or Qf < 200):
+            zona_op = "Não Operação"
+        elif(P4 < 700000 and P5 < 270000 ):
+            zona_op = "Baixa"
+        else:
+            zona_op = "Não é possível determinar a zona de operação."
+        return zona_op
     
     def routine0021():
         print("Todos os processos foram concluídos")

@@ -1,20 +1,13 @@
 from PyTie import PyTie as pytie
+from datetime import datetime
 import random as random
-import math as math
-import time as time
+import locale as locale
 from Mont import Mont
 from Excp import Excp 
 from Ctrl import Ctrl
+import math as math
+import time as time
 import sys as sys
-from datetime import datetime
-import locale as locale
-
-'''
-OBS IMPORTANTES (APAGAR QUANDO FINALIZAR):
-1 - Usar "random.randint(0, 1)" para tomar as decisões binárias não quantitativas.
-2 - As rotinas de emergência devem ser válidas/executadas antes das rotinas de monitoramento. 
-3 - As rotinas de controle são chamadas dentro das rotinas de monitoramento.
-'''
 
 def main():
 
@@ -59,12 +52,8 @@ def main():
 
     P1 = 0
     
-    # Rotinas de Emergência:
-
-    # Condição para executar as emergências. Há a probabilidade de 8,28% de ocorrer uma emergência (13/157).
     excp = random.randint(0, 156)
 
-    '''
     if(excp == 0):
         Excp.routine0033()
         Excp.routine0044()
@@ -148,8 +137,6 @@ def main():
     elif(excp == 143):
         Excp.routine0045(alpha)
         print(f"Ações recomendadas: {Excp.r3}, {Excp.r1}.")
-        
-    '''
     
     hc = Mont.routine0001()
     
@@ -244,7 +231,8 @@ def main():
     
     Mont.routine0018(alpha)
         
-    Mont.routine0020()        
+    zona_op = Mont.routine0020(P4, P5, Qf)  
+    print(f"Zona de operação: {zona_op}")      
     
 if __name__ == "__main__":
     main()
