@@ -24,12 +24,17 @@ class PyTie:
 
     # Equação de Bernoulli (Encontrar Carga Total).
     def equad04(z, v, g, y, P):
-        H = z + ((math.pow(v,2))/ 2 * g) + (P / y)
-        return H
+        gg = 2 * g
+        v_2 = round(((math.pow(v,2)) / gg))
+        P_y = round((P / y), 2)
+        H = z + v_2 + P_y
+        return round(H, 2)
     
     # Equação de Bernoulli (Encontrar Pressão).
     def equad05(H, z, v, g, y):
-        P = (H - z - ((math.pow(v,2))/ 2 * g)) * y
+        gg = 2 * g
+        v_2 = round(((math.pow(v,2))/ gg))
+        P = (H - v_2 - z) * y
         return P
 
     # Perda de carga distribuída.
@@ -39,7 +44,7 @@ class PyTie:
 
     # Perda de carga singular. 
     def equad07(ks, vm, g):
-        hs = ks * ((math.pow(vm,2)/ 2 * g))
+        hs = ks * ((math.pow(vm,2)/ 2 * g)) 
         return hs
     
     # Diâmetro de abertura.
@@ -96,17 +101,17 @@ class PyTie:
 
     # Velocidade média entre os pontos 1 e 2.
     def equad14(vf, v2):
-        vm1_2 = (vf + v2 / 2)
+        vm1_2 = (vf + v2) / 2
         return vm1_2
     
     # Velocidade média entre os pontos 2 e 3.
     def equad15(v2, v3):
-        vm2_3 = (v2 + v3 / 2)
+        vm2_3 = (v2 + v3) / 2
         return vm2_3
     
     # Velocidade média entre os pontos 3 e 4.
     def equad16(v3, v4):
-        vm3_4 = (v3 + v4 / 2)
+        vm3_4 = (v3 + v4) / 2
         return vm3_4
     
     # Cota no ponto 1.

@@ -4,8 +4,11 @@ from Ctrl import Ctrl
 import math as math
 import time as time
 import sys as sys
+import locale as locale
 
 class Mont:
+
+    locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
     
     def routine0001():
         hc = 7
@@ -58,30 +61,37 @@ class Mont:
     def routine0008(z1, z2, vf, v2, g, y, P1, vm1_2, ks_2, ks_3, ks_5):
         H1 = pytie.equad04(z1, vf, g, y, P1)
 
-        hs_1 = pytie.equad07(ks_2, vm1_2, g)
-        hs_2 = pytie.equad07(ks_3, vm1_2, g)
-        hs_3 = pytie.equad07(ks_5, vm1_2, g)
+        hs_1 = pytie.equad07(ks_2, vm1_2, g) / 100
+        hs_2 = pytie.equad07(ks_3, vm1_2, g) / 100
+        hs_3 = pytie.equad07(ks_5, vm1_2, g) / 100
 
-        hs_t = hs_1 + hs_2 + hs_3
+        hs_t = hs_1 + hs_2 + hs_3 
+        hs_t = round(hs_t)
 
-        P2 = (pytie.equad05(H1, z2, v2, g, y) - hs_t)
+        P2 = round((pytie.equad05(H1, z2, v2, g, y) - hs_t), 2)
 
         return P2
 
     def routine0009(z2, z3, v2, v3, g, y, P2, f, L, dt, vm2_3, ks_3): 
         H2 = pytie.equad04(z2, v2, g, y, P2)
 
-        hf = pytie.equad06(f, L, dt, vm2_3, g)
-        hs_1 = pytie.equad07(ks_3, vm2_3, g)
+        hf = round(pytie.equad06(f, L, dt, vm2_3, g)) / 100
+        hs_1 = round(pytie.equad07(ks_3, vm2_3, g)) / 100
 
         h_t = hs_1 + hf
-
-        P3 = (pytie.equad05(H2, z3, v3, g, y) - h_t)
+        
+        P3 = round((pytie.equad05(H2, z3, v3, g, y) - h_t), 2) * (-1)
 
         return P3
     
-    def routine0010(): # TERMINAR!
-        return
+    def routine0010(z3, z4, v3, v4, g, y, P3, ks_4, vm3_4, c_mano):
+        H3 = pytie.equad04(z3, v3, g, y, P3)
+
+        hs_1 = round(pytie.equad07(ks_4, vm3_4, g)) / 100
+
+        P4 = round((pytie.equad05(H3, z4, v4, g, y) - hs_1 + c_mano), 2)
+
+        return P4
     
     def routine0011(ds, hq, y):
         z5 = pytie.equad21(ds, hq)
@@ -97,7 +107,9 @@ class Mont:
     def routine0013(y, hs):
         for z in range(0, (hs + 5), 5):
             P = pytie.equad01(y, z)
-            print(f"Pressão contra a estrutura a {z} m: {P} Pa")
+            P_format = locale.format_string('%.2f', P, grouping=True)
+
+            print(f"Pressão contra a estrutura a {z} m: {P_format} Pa")
     
     def routine0014(alpha):
         estavel = random.randint(0, 10)
@@ -114,9 +126,9 @@ class Mont:
         erosao = random.randint(0, 10)
 
         if(estavel == 0):
-            print(f"Estabilidade estrutural da usina comprometida.")
+            print(f"Estabilidade estrutural da usina comprometida (Revisto).")
         else:
-            print(f"Estabilidade estrutural da usina adequada.")
+            print(f"Estabilidade estrutural da usina adequada (Revisto).")
 
         if(erosao == 0):
             print("Integridade do leito comprometida.")

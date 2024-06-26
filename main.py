@@ -7,6 +7,7 @@ from Excp import Excp
 from Ctrl import Ctrl
 import sys as sys
 from datetime import datetime
+import locale as locale
 
 '''
 OBS IMPORTANTES (APAGAR QUANDO FINALIZAR):
@@ -16,6 +17,8 @@ OBS IMPORTANTES (APAGAR QUANDO FINALIZAR):
 '''
 
 def main():
+
+    locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
     y = 9800    # Peso específico do fluido.
     p = 1000    # Densidade do fluído.
@@ -204,8 +207,6 @@ def main():
     z4 = pytie.equad20(hr, dt)
 
     z5 = pytie.equad21(ds, hq)
-
-    print(f"Cotas: {z1}, {z2}, {z3}, {z4}, {z5}")
     
     P5 = Mont.routine0011(ds, hq, y)
     
@@ -213,24 +214,25 @@ def main():
 
     c_mano = pytie.equad03(Pw, y, Qf, nt)  
 
-    print(f"Carga Manométrica: {round(c_mano, 5)}") 
-
     vm1_2 = pytie.equad14(vf, v2)
 
     vm2_3 = pytie.equad15(v2, v3)
 
     vm3_4 = pytie.equad16(v3, v4)
-
-    print(f"V. Médias: {round(vm1_2)}, {round(vm2_3)}, {round(vm3_4)}")
     
     P2 = Mont.routine0008(z1, z2, vf, v2, g, y, P1, vm1_2, ks_2, ks_3, ks_5)
     
     P3 = Mont.routine0009(z2, z3, v2, v3, g, y, P2, f, L, dt, vm2_3, ks_3)
-    
-    print(f"Pressão 2: {P2}")
-    print(f"Pressão 3: {P3}")
 
-    Mont.routine0010()
+    P4 = Mont.routine0010(z3, z4, v3, v4, g, y, P3, ks_4, vm3_4, c_mano)
+
+    P2_format = locale.format_string('%.2f', P2, grouping=True)
+    P3_format = locale.format_string('%.2f', P3, grouping=True)
+    P4_format = locale.format_string('%.2f', P4, grouping=True)
+
+    print(f"Pressão 2: {P2_format} Pa")
+    print(f"Pressão 3: {P3_format} Pa")
+    print(f"Pressão 4: {P4_format} Pa")
 
     Mont.routine0013(y, hs)
     
