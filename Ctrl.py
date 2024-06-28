@@ -1,3 +1,4 @@
+from colorama import init, Fore, Back, Style
 from datetime import datetime
 import random as random
 import math as math
@@ -7,31 +8,36 @@ import sys as sys
 class Ctrl:
     
     def routine0022():
-        print("As comportas estão sendo abertas.")
+        print(f"{Fore.YELLOW}{Back.BLACK}As comportas estão sendo abertas.{Fore.RESET}{Back.RESET}")
         time.sleep(2)
-        print("As comportas foram totalmente abertas.")
+        print(f"{Fore.GREEN}{Back.BLACK}As comportas foram totalmente abertas.{Fore.RESET}{Back.RESET}")
     
     def routine0023():
-        print("As comportas estão sendo fechadas.")
+        print(f"{Fore.YELLOW}{Back.BLACK}As comportas estão sendo fechadas.{Fore.RESET}{Back.RESET}")
         time.sleep(2)
-        print("As comportas foram totalmente fechadas.")
+        print(f"{Fore.GREEN}{Back.BLACK}As comportas foram totalmente fechadas.{Fore.RESET}{Back.RESET}")
+        print()
     
     def routine0024(alpha):
         if(alpha == 30):
-            print("O ângulo a é máximo e o ajuste não pode ser feito.")
-        print("As pás de captação estão sendo abertas.")
+            print(f"{Fore.RED}{Back.BLACK}O ângulo a é máximo e o ajuste não pode ser feito.{Fore.RESET}{Back.RESET}")
+            print()
+        print(f"{Fore.YELLOW}{Back.BLACK}As pás de captação estão sendo abertas.{Fore.RESET}{Back.RESET}")
         time.sleep(2)
-        print("As pás de captação foram ajustadas.")
+        print(f"{Fore.GREEN}{Back.BLACK}As pás de captação foram ajustadas.{Fore.RESET}{Back.RESET}")
+        print()
         alpha = alpha + 1
         return alpha
     
     def routine0025(alpha):
         if(alpha == 0):
-            print("O ângulo a é mínimo e o ajuste não pode ser feito.")
+            print(f"{Fore.RED}{Back.BLACK}O ângulo a é mínimo e o ajuste não pode ser feito.{Fore.RESET}{Back.RESET}")
+            print()
         elif(0 < alpha <= 30):
-            print("As pás de captação estão sendo fechadas.")
+            print(f"{Fore.YELLOW}{Back.BLACK}As pás de captação estão sendo fechadas.{Fore.RESET}{Back.RESET}")
             time.sleep(2)
-            print("As pás de captação foram ajustadas.")
+            print(f"{Fore.GREEN}{Back.BLACK}As pás de captação foram ajustadas.{Fore.RESET}{Back.RESET}")
+            print()
             alpha = alpha - 1
         return alpha
     
@@ -49,44 +55,50 @@ class Ctrl:
         return Qf
     
     def routine0027():
-        print("As pás de distribuição das turbinas estão sendo abertas.")
+        print(f"{Fore.YELLOW}{Back.BLACK}As pás de distribuição das turbinas estão sendo abertas.{Fore.RESET}{Back.RESET}")
         time.sleep(2)
-        print("As pás de distribuição das turbinas foram abertas.")
+        print(f"{Fore.GREEN}{Back.BLACK}As pás de distribuição das turbinas foram abertas.{Fore.RESET}{Back.RESET}")
+        print()
     
     def routine0028():
-        print("As pás de distribuição das turbinas estão sendo fechadas.")
+        print(f"{Fore.YELLOW}{Back.BLACK}As pás de distribuição das turbinas estão sendo fechadas.{Fore.RESET}{Back.RESET}")
         time.sleep(2)
-        print("As pás de distribuição das turbinas foram fechadas.")
+        print(f"{Fore.GREEN}{Back.BLACK}As pás de distribuição das turbinas foram fechadas.{Fore.RESET}{Back.RESET}")
+        print()
     
     def routine0029():
-        print("Aciondando sistemas de drenagem.")
+        print(f"{Fore.YELLOW}{Back.BLACK}Aciondando sistemas de drenagem.{Fore.RESET}{Back.RESET}")
         time.sleep(2)
-        print("A água foi drenada dos condutos")
+        print(f"{Fore.GREEN}{Back.BLACK}A água foi drenada dos condutos")
+        print()
     
     def routine0030():
         data_atual = datetime.now()
-        print(f"Não há nenhuma manutenção agendada para {data_atual.strftime("%d/%m/%Y, as %H:%M:%S")}.")
+        print(f"Não há nenhuma manutenção agendada para {data_atual.strftime("%d/%m/%Y, as %H:%M:%S")}.{Fore.RESET}{Back.RESET}")
     
     def routine0031(alpha):
-        print("A usina será inicializada.")
+        print(f"{Fore.YELLOW}{Back.BLACK}A usina será inicializada.{Fore.RESET}{Back.RESET}")
         Ctrl.routine0022()
         Ctrl.routine0025(alpha)
         time.sleep(2)
         Ctrl.routine0027()
         time.sleep(2)
-        print("A usina foi inicializada.")
+        print(f"{Fore.GREEN}{Back.BLACK}A usina foi inicializada.{Fore.RESET}{Back.RESET}")
     
     def routine0032(alpha):
-        print("A usina será desligada.")
-        print("Executando rotina 0025.")
+        print()
+        print(f"{Fore.YELLOW}{Back.RED}==> A usina será desligada. <== {Fore.RESET}{Back.RESET}")
+        print()
+        print(f"{Fore.YELLOW}{Back.WHITE}Executando rotina 0025.{Fore.RESET}{Back.RESET}")
         Ctrl.routine0025(alpha)
         time.sleep(2)
-        print("Executando rotina 0028.")
-        Ctrl.routine0028
+        print(f"{Fore.YELLOW}{Back.WHITE}Executando rotina 0028.{Fore.RESET}{Back.RESET}")
+        Ctrl.routine0028()
         time.sleep(2)
-        print("Executando rotina 0023.")
-        Ctrl.routine0023
+        print(f"{Fore.YELLOW}{Back.WHITE}Executando rotina 0023.{Fore.RESET}{Back.RESET}")
+        Ctrl.routine0023()
         time.sleep(2)
-        print("Executando rotina 0029.")
-        Ctrl.routine0029
+        print(f"{Fore.YELLOW}{Back.WHITE}Executando rotina 0029.{Fore.RESET}{Back.RESET}")
+        Ctrl.routine0029()
         time.sleep(2) 
+        sys.exit()
